@@ -12,7 +12,9 @@ def three_num_zero_sum(arr):
         while left < right:
             total = arr[i] + arr[left] + arr[right]
             if abs(total) < 1e-9:
-                triplets.append([arr[i], arr[left], arr[right]])
+                triplet = [int(arr[i]), int(arr[left]), int(arr[right])]
+                if triplet not in triplets:
+                    triplets.append(triplet)
                 left += 1
                 right -= 1
                 while left < right and arr[left] == arr[left - 1]:
@@ -26,9 +28,8 @@ def three_num_zero_sum(arr):
 
     return triplets
 
-print(" *** Find 3 numbers sum to 0 ***")
 nums = [float(e) for e in input("Enter Your List : ").split()]
 if len(nums) < 3:
-    print("Array must contain at least 3 numbers.")
+    print("Array Input Length Must More Than 2")
 else:
     print(three_num_zero_sum(nums))
